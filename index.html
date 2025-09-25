@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<style>
+#menutrai
+{
+    font-family:'Times New Roman', Times, serif
+    font-size: 13px;
+}
+#menutrai ul
+{
+    margin-right: 10px;
+}
+
+#menutrai ul li
+{
+    list-style-type: none;
+    margin-left: 10px;
+}
+a.menutrai:link
+{
+   color: #b22d30;
+   font-family:'Times New Roman', Times, serif;
+   text-decoration: none;
+}
+a.menutrai:visited
+{
+   color: #b22d30;
+   font-family:'Times New Roman', Times, serif;
+   font-weight: 700;
+   
+}
+a.menutrai:hover
+{
+   color: #5426d1;
+   font-family:'Times New Roman', Times, serif
+}
+a.menutrai:active
+{
+   color: #190c3f;
+   font-family:'Times New Roman', Times, serif
+}
+
+/* Ô tìm kiếm */
+#search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#search-box input {
+    padding: 8px 15px 8px 35px; /* chừa chỗ bên trái cho icon */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+#search-box input:focus {
+    border-color: #b22d30;
+    box-shadow: 0 0 5px rgba(178, 45, 48, 0.5);
+}
+
+#search-box button {
+    position: absolute;
+    left: 10px;                /* icon cách mép trái */
+    top: 50%;                  /* đẩy xuống 50% chiều cao */
+    transform: translateY(-50%); /* kéo ngược lên để nằm giữa */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #b22d30;
+    pointer-events: none; /* để không che mất khi click nhập */
+}
+
+ /* Menu chính */
+#menubar {
+    background: #b22d30;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#menubar ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around; /* dàn đều */
+    margin: 0;
+    padding: 0;
+    width: 100%; /* chiếm toàn bộ chiều ngang */
+    max-width: 1000px; /* giới hạn độ rộng để không bị giãn quá */
+}
+
+#menubar li {
+    position: relative;
+}
+
+#menubar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 0 10px;
+    position: relative;
+}
+
+/* Đường gạch dưới chạy từ trái qua phải */
+#menubar a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s ease;
+}
+
+#menubar a:hover::after,
+#menubar a:focus::after {
+    width: 100%;
+}
+
+/* Submenu ẩn mặc định */
+#menubar ul ul {
+    display: none;
+    position: absolute;
+    top: 175%;               /* submenu cách xa menu cha */
+    left: 0;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    min-width: 220px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    z-index: 2000;
+}
+
+/* Mục con */
+#menubar ul ul li {
+    width: 100%;
+}
+
+#menubar ul ul a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    font-weight: normal;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Hover submenu */
+#menubar ul ul a:hover {
+    background: #f2f2f2;
+    color: #b22d30;
+}
+
+/* Vùng đệm để giữ hover */
+#menubar li {
+    position: relative;
+}
+#menubar li::after {
+    content: "";
+    position: absolute;
+    top: 100%;        /* ngay dưới menu cha */
+    left: 0;
+    width: 100%;
+    height: 90px;     /* bằng khoảng cách trống giữa cha và submenu */
+    background: transparent;
+}
+
+/* Hiện submenu khi hover menu cha */
+#menubar li:hover > ul {
+    display: block;
+}
+
+
+
+</style>
+<html>
+    <header>
+        <link rel="stylesheet" href="css/layout.css"/>
+
+        <div id="header" style="display: flex;flex-direction: column;height: 180px;background-color: aqua;">
+            <div id="banner" style="height: 126px; background-color: #fff; display: flex; flex-direction: row;text-align: center;justify-content: center;align-items: center;">
+                    <div id="divmenutrai">
+                            <nav id="menutrai">
+                                <ul style="display: flex; flex-direction: row;width: 270px;">
+                                    <li><a href="https://www.kthcm.edu.vn/" class="menutrai">TRANG CHỦ</a></li>
+                                    <li><a class="menutrai"> EGOV</a></li>
+                                    <li><a class="menutrai">SINH VIÊN</a></li>
+                                </ul>
+                            </nav>
+                    </div>
+                    <div style="width: 1000px;">
+                        <img src="images/Ten-truong-do-1000x159.png" width="500" height="80"/>
+                    </div>
+                    <div id="search-box">
+                        <form>
+                            <input type="text" placeholder="Tìm kiếm...">
+                            <button type="submit">🔍</button>
+                        </form>
+                    </div>                    
+            </div>
+            <div id="menubar">
+                <ul>
+                    <li>
+                        <a href="#">GIỚI THIỆU ▾</a>
+                        <ul>
+                            <li><a href="#">Lịch sử hình thành và phát triển</a></li>
+                            <li><a href="#">Bộ máy tổ chức</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">TIN TỨC - SỰ KIỆN</a></li>
+                    <li><a href="#">TUYỂN SINH</a></li>
+                    <li><a href="#">CÔNG KHAI GIÁO DỤC</a></li>
+                    <li><a href="#">CƠ CẤU TỔ CHỨC</a></li>
+                    <li><a href="#">LIÊN KẾT</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+    </header>
+    <body>
+
+    </body>
+    <footer>
+
+    </footer>
+</html>
